@@ -24,11 +24,31 @@ let person3 = {
 
 // alert(JSON.stringify(person3));
 
-let favoriteFood = person3
-for (let p in person3){
-    console.log(`my favorite ${p} is ${favoriteFood[p]}`)
+// let favoriteFood = person3
+// for (let p in person3){
+//     console.log(`my favorite ${p} is ${favoriteFood[p]}`)
+// };
+
+let isObject = (val) => {
+    if (val === null) {
+        return false;
+    }
+
+    return typeof val === 'object'
 };
 
+
+let nestedObject = (obj) => {
+    for (let key in obj) {
+        if (isObject(obj[key])){
+            nestedObject(obj[key]);
+        } else{
+            console.log(`${key} : ${obj[key]}`)
+        }
+    }
+}
+
+nestedObject(person3)
 
 // console.log(person3['shakes'][0])
     // console.log(person3['pizza']);
